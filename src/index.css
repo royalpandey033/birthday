@@ -1,0 +1,210 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-main: #090407;
+    --card-bg: rgba(26, 11, 20, 0.65);
+    --border-subtle: rgba(245, 220, 178, 0.12);
+    --border-glow: rgba(216, 58, 86, 0.35);
+    --gold: #dfa45f;
+  }
+
+  * {
+    border-color: var(--border-subtle);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #070305;
+  }
+
+  body {
+    background-color: #070305;
+    color: #fbedd0;
+    overflow-x: hidden;
+  }
+
+  /* Custom selection */
+  ::selection {
+    background: rgba(216, 58, 86, 0.35);
+    color: #ffffff;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 7px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0a0408;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #331221;
+    border-radius: 4px;
+    border: 1px solid rgba(223, 164, 95, 0.15);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #541c38;
+  }
+}
+
+/* Film grain effect */
+.bg-grain {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Glassmorphism card styles */
+.glass-panel {
+  background: rgba(22, 8, 17, 0.6);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(245, 220, 178, 0.12);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+}
+
+.glass-panel-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-panel-hover:hover {
+  border-color: rgba(223, 164, 95, 0.35);
+  box-shadow: 0 15px 40px -10px rgba(216, 58, 86, 0.2), 0 0 20px rgba(223, 164, 95, 0.1);
+  transform: translateY(-3px);
+}
+
+/* Handwritten letter parchment style */
+.letter-parchment {
+  background-color: #fbf7ee;
+  background-image: 
+    linear-gradient(rgba(216, 185, 142, 0.15) 1px, transparent 1px),
+    radial-gradient(#e8ddc9 10%, transparent 11%);
+  background-size: 100% 28px, 12px 12px;
+  box-shadow: 
+    0 1px 3px rgba(0,0,0,0.12), 
+    0 10px 30px rgba(0,0,0,0.35),
+    inset 0 0 40px rgba(184, 137, 85, 0.12);
+}
+
+/* Text glow */
+.text-glow-gold {
+  text-shadow: 0 0 20px rgba(223, 164, 95, 0.4);
+}
+
+.text-glow-rose {
+  text-shadow: 0 0 25px rgba(216, 58, 86, 0.45);
+}
+
+/* Animated gradient border */
+.gradient-border-glow {
+  position: relative;
+  border-radius: 1rem;
+}
+.gradient-border-glow::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(223, 164, 95, 0.4), rgba(216, 58, 86, 0.3), rgba(223, 164, 95, 0.05));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Custom Cursor */
+.custom-cursor-dot {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+}
+
+/* Private Theatre Presentation Mode Styles (16:9 Cinema & High Resolution Display) */
+body.theatre-mode {
+  font-size: 115%;
+}
+
+body.theatre-mode section {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+body.theatre-mode h1 {
+  font-size: clamp(3.2rem, 6.5vw, 7.5rem) !important;
+  text-shadow: 0 0 35px rgba(223, 164, 95, 0.45), 0 0 70px rgba(216, 58, 86, 0.3) !important;
+}
+
+body.theatre-mode h2 {
+  font-size: clamp(2.6rem, 5vw, 5.5rem) !important;
+  text-shadow: 0 0 30px rgba(223, 164, 95, 0.35) !important;
+}
+
+body.theatre-mode p {
+  font-size: clamp(1.1rem, 1.8vw, 1.45rem) !important;
+  line-height: 1.8 !important;
+}
+
+body.theatre-mode .glass-panel {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 20px 60px -15px rgba(0, 0, 0, 0.85);
+  border-color: rgba(245, 220, 178, 0.22);
+}
+
+/* Base image responsive safety */
+img {
+  max-width: 100%;
+}
+
+/* Mobile & Small Screen Optimizations (<480px) */
+@media (max-width: 480px) {
+  html, body {
+    overflow-x: hidden !important;
+  }
+  .glass-panel {
+    padding: 1.25rem;
+  }
+  h1 {
+    font-size: clamp(2rem, 8vw, 3rem) !important;
+  }
+  h2 {
+    font-size: clamp(1.6rem, 6vw, 2.4rem) !important;
+  }
+}
+
+/* Tablet Optimizations (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .glass-panel {
+    padding: 1.75rem;
+  }
+}
+
+/* Projector & 1080p / 1440p / 4K Display Optimizations (≥1920px) */
+@media (min-width: 1920px) {
+  html {
+    font-size: 115%;
+  }
+}
+
+@media (min-width: 2560px) {
+  html {
+    font-size: 125%;
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+

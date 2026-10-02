@@ -1,0 +1,2 @@
+# Place your MP4 or WebM video files here
+# e.g. video-01.mp4, rain-laugh.mp4
